@@ -40,3 +40,8 @@
     background: lightgrey;
     margin:20px;
 }
+
+.menu{
+    display:flex;
+    flex-wrap: wrap;
+}
