@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import useOnline from "../utils/useOnline";
 
 
 const loggedInUser = () => {
@@ -19,6 +20,8 @@ const Title = () => (
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
+  const isOnline = useOnline();
+
   return (
     <div className="header">
       <Title />
@@ -27,9 +30,11 @@ const Header = () => {
          <li><Link to= "/"> Home</Link></li>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/contact">Contact</Link></li>
+          <li><Link to="/instamart">Instamart</Link></li>
           <li>Cart</li>
         </ul>
       </div>
+      <h1>{isOnline ? "✅": "🔴"}</h1>
       {isLoggedIn ? (<button className="login" onClick={() => setIsLoggedIn(false)}>Login</button>
        ) : (
        <button className="logout" onClick={() => setIsLoggedIn(true)}> Logout</button>) } 
